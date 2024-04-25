@@ -25,7 +25,7 @@ function MyComponent() {
 
   return (
     <div>
-      <h1>Hello from mf2: Async Data Component</h1>
+      <h1>Hello from mf2: Async Data Component </h1>
       {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <p>Loading data...</p>}
     </div>
   );
