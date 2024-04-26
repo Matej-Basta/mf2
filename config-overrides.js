@@ -15,10 +15,10 @@ module.exports = function override(config, env) {
 
   config.plugins = [
     new ModuleFederationPlugin({
-      name: 'Mf2',
+      name: 'payment',
       filename: 'remoteEntry.js',
       exposes: {
-        './MyComponent': './src/MyComponent', // Adjust the path to your component
+        './Payment': './src/components/Payment.tsx', // Adjust the path to your component
       },
       shared: {
         // Shared dependencies
