@@ -1,33 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 // @ts-ignore
 import styles from "./price.module.css";
-/* import { useGenerationStoreCart } from "../state/cart"; */
+import CartItemType from "../types/CartItemType";
+
+const bc = new BroadcastChannel('cart');
 
 export default function Price() {
-    /* const {cart} = useGenerationStoreCart();
+    const [cart, setCart] = useState<CartItemType[]>([]);
+
+    bc.onmessage = (event) => {
+        const data = event.data;
+        if (data.action === "add") {
+            const item = cart.find((cartItem: CartItemType) => cartItem.id === data.product.id);
+            if (item) {
+                item.quantity += 1;
+            } else {
+                cart.push({...data.product, quantity: 1});
+            }
+            setCart([...cart]);
+        } else if (data.action === "remove") {
+            const item = cart.find((cartItem: CartItemType) => cartItem.id === data.product.id);
+            if (item) {
+                item.quantity -= 1;
+                if (item.quantity === 0) {
+                    const newCart = cart.filter((cartItem) => cartItem.id !== item.id);
+                    setCart([...newCart]);
+                    return;
+                }
+            }
+            setCart([...cart]);
+        } else if (data.action === "clear") {
+            setCart([]);
+        }
+    };
+
     const priceOfItems = cart.reduce((acc, item) => acc + (item.quantity*item.price), 0);
     const roundedPrice = Number(priceOfItems.toFixed(2));
     const deliveryPrice = Number(roundedPrice * 0.1).toFixed(0);
     const tax = Number(roundedPrice * 0.2).toFixed(0);
-    const total = Number(roundedPrice + deliveryPrice + tax).toFixed(2); */
+    const total = Number(roundedPrice + deliveryPrice + tax).toFixed(2);
+
     return (
         <div className={styles.price}>
             <div className={styles.unit}>
                 <p>Amount</p>
-                <p>300 DKK</p>
+                <p>{roundedPrice} DKK</p>
             </div>
             <div className={styles.unit}>
                 <p>Delivery</p>
-                <p>20 DKK</p>
+                <p>{deliveryPrice} DKK</p>
             </div>
             <div className={styles.unit}>
                 <p>Tax</p>
-                <p>20 DKK</p>
+                <p>{tax} DKK</p>
             </div>
             <hr />
             <div className={`${styles.unit} ${styles.total}`}>
                 <p>Total</p>
-                <p>340 DKK</p>
+                <p>{total} DKK</p>
             </div>
             <div className={`${styles.unit} ${styles.terms}`}>
                 <input type="checkbox" name="terms" />
