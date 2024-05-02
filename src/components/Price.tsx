@@ -37,6 +37,7 @@ export default function Price() {
     const priceOfItems = cart.reduce((acc, item) => acc + (item.quantity*item.price), 0);
     const roundedPrice = Number(priceOfItems.toFixed(2));
     const deliveryPrice = Number(roundedPrice * 0.1).toFixed(0);
+    
     const tax = Number(roundedPrice * 0.2).toFixed(0);
     const total = Number(roundedPrice + deliveryPrice + tax).toFixed(2);
 
@@ -52,12 +53,12 @@ export default function Price() {
             </div>
             <div className={styles.unit}>
                 <p>Tax</p>
-                <p>{tax} DKK</p>
+                <p data-testid="tax">{tax} DKK</p>
             </div>
             <hr />
             <div className={`${styles.unit} ${styles.total}`}>
                 <p>Total</p>
-                <p>{total} DKK</p>
+                <p data-testid="total">{total} DKK</p>
             </div>
             <div className={`${styles.unit} ${styles.terms}`}>
                 <input type="checkbox" name="terms" />

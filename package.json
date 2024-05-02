@@ -15,6 +15,7 @@
     "start": "set PORT=3008 && react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
+    "test:nowatch": "react-app-rewired test --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -38,5 +39,10 @@
   "devDependencies": {
     "html-webpack-plugin": "^5.6.0",
     "react-app-rewired": "^2.2.1"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+        "./config/jest.setup.js"
+    ]
   }
 }
