@@ -1,5 +1,6 @@
 .payment-container {
     background-color: #890E6E;
+    background-color: green !important;
     color: white;
     display: flex;
     justify-content: space-between;
