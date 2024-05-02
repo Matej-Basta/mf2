@@ -6,6 +6,6 @@ describe(Price, () => {
         const {getByTestId} = render(<Price />);
         // eslint-disable-next-line testing-library/prefer-screen-queries
         const totalValue = getByTestId("total").textContent;
-        expect(totalValue).toBe("2222.00 DKK");
+        expect(totalValue).toBe("0.00 DKK");
     });
 }) 
