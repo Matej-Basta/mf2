@@ -9,6 +9,7 @@ export default function Payment() {
         <div className={styles["payment-container"]}>
             <Form />
             <Price />
+            <p>ahoj</p>
         </div>
     )
 }
