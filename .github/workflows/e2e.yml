@@ -1,0 +1,14 @@
+name: Trigger Shell Workflow
+
+on: [pull_request]
+
+jobs:
+  trigger_shell_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Shell Workflow
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.shell }}
+          repository: Matej-Basta/shell
+          event-type: trigger-shell-workflow

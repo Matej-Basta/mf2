@@ -39,7 +39,8 @@ export default function Price() {
     const deliveryPrice = Number(roundedPrice * 0.1).toFixed(0);
     
     const tax = Number(roundedPrice * 0.2).toFixed(0);
-    const total = Number(roundedPrice + deliveryPrice + tax).toFixed(2);
+    const sum = Number(roundedPrice) + Number(deliveryPrice) + Number(tax);
+    const total = Number(sum).toFixed(2);
 
     return (
         <div className={styles.price}>
@@ -58,7 +59,7 @@ export default function Price() {
             <hr />
             <div className={`${styles.unit} ${styles.total}`}>
                 <p>Total</p>
-                <p data-testid="total">{total} DKK</p>
+                <p data-testid="total" id="grand_total">{total} DKK</p>
             </div>
             <div className={`${styles.unit} ${styles.terms}`}>
                 <input type="checkbox" name="terms" />
