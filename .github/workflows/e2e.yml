@@ -1,6 +1,6 @@
 name: Trigger Shell Workflow
 
-on: [push]
+on: [pull_request]
 
 jobs:
   trigger_shell_workflow:
