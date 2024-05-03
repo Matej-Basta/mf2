@@ -3,7 +3,7 @@ import Form from "./Form.tsx";
 import Price from "./Price.tsx";
 // @ts-ignore
 import styles from "./payment.module.css";
-//test
+
 export default function Payment() {
     return (
         <div className={styles["payment-container"]}>
