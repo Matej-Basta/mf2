@@ -1,14 +1,15 @@
 name: Trigger Shell Workflow
 
-on: [pull_request]
+on: [push]
 
 jobs:
   trigger_shell_workflow:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Shell Workflow
-        uses: peter-evans/repository-dispatch@v2
+        uses: convictional/trigger-workflow-and-wait@v1.3.0
         with:
-          token: ${{ secrets.shell }}
-          repository: Matej-Basta/shell
-          event-type: trigger-shell-workflow
+          owner: Matej-Basta
+          repo: shell
+          github_token: ${{ secrets.G_ACCESS_TOKEN }}
+          workflow_file_name: e2e.yml
