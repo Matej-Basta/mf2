@@ -59,7 +59,7 @@ export default function Price() {
             <hr />
             <div className={`${styles.unit} ${styles.total}`}>
                 <p>Total</p>
-                <p data-testid="total" id="grand_total">{total} DKK</p>
+                <p data-testid="total" id="grand_total">0.00 DKK</p>
             </div>
             <div className={`${styles.unit} ${styles.terms}`}>
                 <input type="checkbox" name="terms" />
