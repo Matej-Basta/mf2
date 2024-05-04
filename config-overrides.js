@@ -5,7 +5,9 @@ const deps = require('./package.json').dependencies;
 
 module.exports = function override(config, env) {
     // Set the public path based on the environment
-    const publicPath = env === 'development' ? 'http://localhost:3008/' : 'https://mf2.vercel.app/';
+    const isProduction = process.env.NODE_ENV === 'production';
+    const isPreview = process.env.VERCEL_ENV === 'preview';
+    const publicPath = isPreview ? 'https://mf2-staging.vercel.app/' : ( isProduction ? 'https://mf2.vercel.app/' : 'http://localhost:3008/' );
 
     // Ensure the public path is set in the output configuration
     config.output = {
